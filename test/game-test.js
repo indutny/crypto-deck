@@ -12,14 +12,17 @@ const CARD_COUNT = 52;
 const CURVE = elliptic.curves.secp256k1.curve;
 const PLAYER_COUNT = 4;
 
-tape('Poker/Game', (t) => {
+tape('Game: draw all', (t) => {
   const players = [];
   for (let i = 0; i < PLAYER_COUNT; i++) {
     players.push(new Game({
       cards: CARD_COUNT,
       curve: CURVE,
       rules: {
-        draw: () => true,
+        draw: () => {},
+        onDraw: () => {},
+        open: () => {},
+        onOpen: () => {}
       },
       index: i,
       playerCount: PLAYER_COUNT
@@ -59,7 +62,7 @@ tape('Poker/Game', (t) => {
       if (err)
         return done(err);
 
-      t.ok(0 <= card < CARD_COUNT,
+      t.ok(0 <= card.number < CARD_COUNT,
            `.draw() should get valid card #${cards.length}`);
       cards.push(card);
       if (cards.length === CARD_COUNT)

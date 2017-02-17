@@ -7,7 +7,7 @@ const elliptic = require('elliptic');
 const poker = require('../');
 const RNG = poker.RNG;
 
-tape('Poker/RNG', (t) => {
+tape('RNG', (t) => {
   const rng = new RNG();
 
   function dist(num) {

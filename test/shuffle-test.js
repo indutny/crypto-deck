@@ -7,7 +7,7 @@ const elliptic = require('elliptic');
 const poker = require('../');
 const Shuffle = poker.Shuffle;
 
-tape('Poker/Shuffle', (t) => {
+tape('Shuffle', (t) => {
   function dist(num) {
     // Check that the distribution is uniform
     const out = new Array(num);

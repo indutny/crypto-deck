@@ -9,7 +9,7 @@ const Deck = poker.Deck;
 
 const CARD_COUNT = 52;
 
-tape('Poker/Deck', (t) => {
+tape('Deck', (t) => {
   const p1 = new Deck({
     cards: CARD_COUNT,
     curve: elliptic.curves.secp256k1.curve
