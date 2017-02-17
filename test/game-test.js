@@ -14,19 +14,23 @@ const PLAYER_COUNT = 4;
 
 tape('Game: draw all', (t) => {
   const players = [];
+  const logs = [];
   for (let i = 0; i < PLAYER_COUNT; i++) {
+    const log = [];
+
     players.push(new Game({
       cards: CARD_COUNT,
       curve: CURVE,
       rules: {
-        draw: () => {},
-        onDraw: () => {},
-        open: () => {},
-        onOpen: () => {}
+        draw: (p, i) => { log.push([ 'draw', p, i ]); },
+        onDraw: (p, i, v) => { log.push([ 'onDraw', p, i, v ]); },
+        open: (p, i) => { log.push([ 'open', p, i ]); },
+        onOpen: (p, i, v) => { log.push([ 'onOpen', p, i, v ]); }
       },
       index: i,
       playerCount: PLAYER_COUNT
     }));
+    logs.push(log);
   }
 
   function send(msg, target, from) {

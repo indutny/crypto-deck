@@ -4,7 +4,7 @@
   "description": "",
   "main": "lib/poker.js",
   "scripts": {
-    "test": "tape test/*-test.js"
+    "test": "tape test/*-test.js | tap-dot"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "minimalistic-assert": "^1.0.0"
   },
   "devDependencies": {
+    "tap-dot": "^1.0.5",
     "tape": "^4.6.3"
   }
 }
