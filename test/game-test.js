@@ -62,7 +62,7 @@ tape('Game: draw all', (t) => {
       if (err)
         return done(err);
 
-      t.ok(0 <= card.number < CARD_COUNT,
+      t.ok(0 <= card.value < CARD_COUNT,
            `.draw() should get valid card #${cards.length}`);
       cards.push(card);
       if (cards.length === CARD_COUNT)
@@ -72,12 +72,30 @@ tape('Game: draw all', (t) => {
     });
   }
 
+  const opened = [];
+  function openOne(index, done) {
+    players[index % PLAYER_COUNT].open(index, (err, card) => {
+      if (err)
+        return done(err);
+
+      opened.push(card);
+      if (opened.length === CARD_COUNT)
+        return done(null, opened);
+
+      openOne(index + 1, done);
+    });
+  }
+
   function onReady() {
     drawOne(0, (err, cards) => {
       t.error(err, 'no error when drawing');
-      t.equals(cards.length, CARD_COUNT);
-      t.end();
+      t.equals(cards.length, CARD_COUNT, 'got right number of cards');
+      openOne(0, (err, opened) => {
+        t.error(err, 'no error when drawing');
+        t.deepEquals(opened, cards, 'got right cards');
+        t.end();
+      });
     });
   }
-  players[0].on('ready', onReady);
+  players[0].once('idle', onReady);
 });
