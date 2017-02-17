@@ -7,7 +7,7 @@ const elliptic = require('elliptic');
 const poker = require('../');
 const Deck = poker.Deck;
 
-const CARD_COUNT = 3;
+const CARD_COUNT = 52;
 
 tape('Poker/Deck', (t) => {
   const p1 = new Deck({
