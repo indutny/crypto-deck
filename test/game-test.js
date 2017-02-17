@@ -19,13 +19,13 @@ tape('Game: draw all', (t) => {
     const log = [];
 
     players.push(new Game({
-      cards: CARD_COUNT,
+      cardCount: CARD_COUNT,
       curve: CURVE,
-      rules: {
-        draw: (p, i) => { log.push([ 'draw', p, i ]); },
-        onDraw: (p, i, v) => { log.push([ 'onDraw', p, i, v ]); },
-        open: (p, i) => { log.push([ 'open', p, i ]); },
-        onOpen: (p, i, v) => { log.push([ 'onOpen', p, i, v ]); }
+      controller: {
+        validateDraw: (p, i) => { log.push([ 'validateDraw', p ]); },
+        draw: (p, i, v) => { log.push([ 'draw', p, i, v ]); },
+        validateOpen: (p, i) => { log.push([ 'validateOpen', p, i ]); },
+        open: (p, i, v) => { log.push([ 'open', p, i, v ]); }
       },
       index: i,
       playerCount: PLAYER_COUNT

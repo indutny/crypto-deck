@@ -11,12 +11,12 @@ const CARD_COUNT = 52;
 
 tape('Deck', (t) => {
   const p1 = new Deck({
-    cards: CARD_COUNT,
+    cardCount: CARD_COUNT,
     curve: elliptic.curves.secp256k1.curve
   });
 
   const p2 = new Deck({
-    cards: CARD_COUNT,
+    cardCount: CARD_COUNT,
     curve: elliptic.curves.secp256k1.curve
   });
 

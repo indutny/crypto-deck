@@ -27,9 +27,13 @@
     "debug": "^2.6.1",
     "elliptic": "^6.3.3",
     "inherits": "^2.0.3",
-    "minimalistic-assert": "^1.0.0"
+    "minimalistic-assert": "^1.0.0",
+    "serve-static": "^1.11.2",
+    "socket.io": "^1.7.3",
+    "socket.io-client": "^1.7.3"
   },
   "devDependencies": {
+    "browserify": "^14.1.0",
     "tap-dot": "^1.0.5",
     "tape": "^4.6.3"
   }
