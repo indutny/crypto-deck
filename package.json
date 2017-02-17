@@ -1,0 +1,33 @@
+{
+  "name": "poker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/poker.js",
+  "scripts": {
+    "test": "tape test/*-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/indutny/poker.git"
+  },
+  "keywords": [
+    "poker",
+    "mental",
+    "elliptic"
+  ],
+  "author": "Fedor Indutny <fedor@indutny.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/indutny/poker/issues"
+  },
+  "homepage": "https://github.com/indutny/poker#readme",
+  "dependencies": {
+    "bn.js": "^4.11.6",
+    "brorand": "^1.0.7",
+    "elliptic": "^6.3.3",
+    "minimalistic-assert": "^1.0.0"
+  },
+  "devDependencies": {
+    "tape": "^4.6.3"
+  }
+}
