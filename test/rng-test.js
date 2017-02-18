@@ -4,8 +4,8 @@ const tape = require('tape');
 
 const elliptic = require('elliptic');
 
-const poker = require('../');
-const RNG = poker.RNG;
+const cryptoDeck = require('../');
+const RNG = cryptoDeck.RNG;
 
 tape('RNG', (t) => {
   const rng = new RNG();

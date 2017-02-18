@@ -4,8 +4,8 @@ const tape = require('tape');
 
 const elliptic = require('elliptic');
 
-const poker = require('../');
-const Shuffle = poker.Shuffle;
+const cryptoDeck = require('../');
+const Shuffle = cryptoDeck.Shuffle;
 
 tape('Shuffle', (t) => {
   function dist(num) {

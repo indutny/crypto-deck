@@ -4,8 +4,8 @@ const tape = require('tape');
 
 const elliptic = require('elliptic');
 
-const poker = require('../');
-const Deck = poker.Deck;
+const cryptoDeck = require('../');
+const Deck = cryptoDeck.Deck;
 
 const CARD_COUNT = 52;
 

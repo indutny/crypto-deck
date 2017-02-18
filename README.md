@@ -1,6 +1,6 @@
-# Poker
+# Crypto Deck
 
-Distributed [Mental Poker][0] implementation.
+Cryptographically secure [Mental Card Deck][0] implementation.
 
 ## LICENSE
 

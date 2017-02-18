@@ -1,14 +1,14 @@
 {
-  "name": "poker",
+  "name": "crypto-deck",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/poker.js",
+  "main": "lib/crypto-deck.js",
   "scripts": {
     "test": "tape test/*-test.js | tap-dot"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/indutny/poker.git"
+    "url": "git+ssh://git@github.com/indutny/crypto-deck.git"
   },
   "keywords": [
     "poker",
@@ -18,22 +18,18 @@
   "author": "Fedor Indutny <fedor@indutny.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/indutny/poker/issues"
+    "url": "https://github.com/indutny/crypto-deck/issues"
   },
-  "homepage": "https://github.com/indutny/poker#readme",
+  "homepage": "https://github.com/indutny/crypto-deck#readme",
   "dependencies": {
     "bn.js": "^4.11.6",
     "brorand": "^1.0.7",
-    "debug": "^2.6.1",
     "elliptic": "^6.3.3",
     "inherits": "^2.0.3",
-    "minimalistic-assert": "^1.0.0",
-    "serve-static": "^1.11.2",
-    "socket.io": "^1.7.3",
-    "socket.io-client": "^1.7.3"
+    "minimalistic-assert": "^1.0.0"
   },
   "devDependencies": {
-    "browserify": "^14.1.0",
+    "debug": "^2.6.1",
     "tap-dot": "^1.0.5",
     "tape": "^4.6.3"
   }
