@@ -23,7 +23,7 @@ const controller = {
   update: (state) => {},
 };
 
-const p = new cryptoDeck.create({
+const p = cryptoDeck.create({
   curve: require('elliptic').curves.secp256k1.curve,
   cardCount: 52,
   controller,
