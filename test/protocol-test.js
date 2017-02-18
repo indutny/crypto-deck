@@ -6,7 +6,6 @@ const debug = require('debug')('test');
 const elliptic = require('elliptic');
 
 const cryptoDeck = require('../');
-const Protocol = cryptoDeck.protocol.Protocol;
 
 const CARD_COUNT = 52;
 const CURVE = elliptic.curves.secp256k1.curve;
@@ -22,7 +21,7 @@ tape('Protocol: mutex', (t) => {
   const players = [];
 
   for (let i = 0; i < 3; i++) {
-    const player = new Protocol({
+    const player = new cryptoDeck.create({
       cardCount: CARD_COUNT,
       curve: CURVE,
       controller: CONTROLLER,
@@ -67,7 +66,7 @@ tape('Protocol: mutex', (t) => {
 tape('Protocol: draw all', (t) => {
   const players = [];
   for (let i = 0; i < PLAYER_COUNT; i++) {
-    players.push(new Protocol({
+    players.push(new cryptoDeck.create({
       cardCount: CARD_COUNT,
       curve: CURVE,
       controller: CONTROLLER,
