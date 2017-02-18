@@ -11,26 +11,69 @@ const Protocol = poker.Protocol;
 const CARD_COUNT = 52;
 const CURVE = elliptic.curves.secp256k1.curve;
 const PLAYER_COUNT = 4;
+const CONTROLLER = {
+  validateDraw: (p, i) => {},
+  draw: (p, i, v) => {},
+  validateOpen: (p, i) => {},
+  open: (p, i, v) => {}
+};
+
+tape('Protocol: mutex', (t) => {
+  const players = [];
+
+  for (let i = 0; i < 3; i++) {
+    const player = new Protocol({
+      cardCount: CARD_COUNT,
+      curve: CURVE,
+      controller: CONTROLLER,
+      index: i,
+      playerCount: PLAYER_COUNT
+    });
+    players.push(player);
+
+    player.on('message', (msg, target) => {
+      debug(`P${i} sent ${msg.type} to P${target}`);
+      players[target].receive(msg, i);
+    });
+  }
+
+  const log = [];
+  let locked = false;
+
+  function test(i, timeout) {
+    players[i]._mutex((unlock) => {
+      t.ok(!locked, `should not be locked #${log.length}`);
+      locked = true;
+
+      log.push(i);
+      setTimeout(() => {
+        locked = false;
+        unlock();
+      }, timeout);
+    });
+  }
+
+  test(1, 50);
+  test(0, 100);
+  test(1, 50);
+  test(2, 50);
+
+  players[1]._mutex(function(unlock) {
+    t.deepEqual(log, [ 0, 1, 2, 1 ], 'should interleave mutexes');
+    t.end();
+  });
+});
 
 tape('Protocol: draw all', (t) => {
   const players = [];
-  const logs = [];
   for (let i = 0; i < PLAYER_COUNT; i++) {
-    const log = [];
-
     players.push(new Protocol({
       cardCount: CARD_COUNT,
       curve: CURVE,
-      controller: {
-        validateDraw: (p, i) => { log.push([ 'validateDraw', p ]); },
-        draw: (p, i, v) => { log.push([ 'draw', p, i, v ]); },
-        validateOpen: (p, i) => { log.push([ 'validateOpen', p, i ]); },
-        open: (p, i, v) => { log.push([ 'open', p, i, v ]); }
-      },
+      controller: CONTROLLER,
       index: i,
       playerCount: PLAYER_COUNT
     }));
-    logs.push(log);
   }
 
   function send(msg, target, from) {
