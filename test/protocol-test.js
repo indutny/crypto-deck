@@ -6,19 +6,19 @@ const debug = require('debug')('test');
 const elliptic = require('elliptic');
 
 const poker = require('../');
-const Game = poker.Game;
+const Protocol = poker.Protocol;
 
 const CARD_COUNT = 52;
 const CURVE = elliptic.curves.secp256k1.curve;
 const PLAYER_COUNT = 4;
 
-tape('Game: draw all', (t) => {
+tape('Protocol: draw all', (t) => {
   const players = [];
   const logs = [];
   for (let i = 0; i < PLAYER_COUNT; i++) {
     const log = [];
 
-    players.push(new Game({
+    players.push(new Protocol({
       cardCount: CARD_COUNT,
       curve: CURVE,
       controller: {
@@ -49,10 +49,6 @@ tape('Game: draw all', (t) => {
   }
 
   players.forEach((player, current) => {
-    player.on('stateChange', (from, to) => {
-      debug(`P${current} changed state from: ${from} to: ${to}`);
-    });
-
     player.on('message', (msg, target) => {
       send(msg, target, current);
     });
@@ -101,5 +97,5 @@ tape('Game: draw all', (t) => {
       });
     });
   }
-  players[0].once('idle', onReady);
+  players[0].once('ready', onReady);
 });
