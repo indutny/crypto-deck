@@ -63,7 +63,7 @@ tape('Deck', (t) => {
   }), 'players have same locked cards');
 
   // Draw all cards
-  var out = [];
+  const out = [];
   while (!p1.isEmpty()) {
     const i = p1.getDrawIndex();
     p1.draw(i);
