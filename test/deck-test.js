@@ -65,7 +65,8 @@ tape('Deck', (t) => {
   // Draw all cards
   var out = [];
   while (!p1.isEmpty()) {
-    const i = p1.draw();
+    const i = p1.getDrawIndex();
+    p1.draw(i);
     const keys = [
       p1.getKey(i),
       p2.getKey(i)
