@@ -8,7 +8,7 @@ function State(options) {
   this.visual = new poker.controller.Visual({
     cardCount: options.cardCount
   });
-  this.game = new poker.Game({
+  this.game = new poker.Protocol({
     index: options.index,
     playerCount: options.playerCount,
     cardCount: options.cardCount,
@@ -16,9 +16,9 @@ function State(options) {
     controller: this.visual
   });
 
-  // Game events
+  // Protocol events
 
-  this.game.once('idle', function() {
+  this.game.once('ready', function() {
     postMessage({ type: 'ready', payload: null });
   });
   this.game.on('message', function(msg, target) {
@@ -53,7 +53,11 @@ State.prototype.open = function open(index) {
 };
 
 State.prototype.update = function update(msg) {
-  this.game.update(msg);
+  this.game.update(msg, functin(err) {
+    if (err)
+      return postMessage({ type: 'error', payload: err.message });
+    postMessage({ type: 'update:complete' });
+  });
 };
 
 State.prototype.receive = function receive(msg) {
