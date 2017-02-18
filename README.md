@@ -1,5 +1,5 @@
 # Crypto Deck
-[![Build Status](https://secure.travis-ci.org/indutny/crypto-deck.png)](http://travis-ci.org/indutny/crypto-deck)
+[![Build Status](https://secure.travis-ci.org/indutny/crypto-deck.svg)](http://travis-ci.org/indutny/crypto-deck)
 [![NPM version](https://badge.fury.io/js/crypto-deck.svg)](http://badge.fury.io/js/crypto-deck)
 
 Cryptographically secure [Mental Card Deck][0] implementation.
