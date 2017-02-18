@@ -28,7 +28,7 @@ const p = new cryptoDeck.protocol.Protocol({
   cardCount: 54,
   controller,
   playerCount: 4,
-  index: 0  /* Put player index here, should be less than `playerCount`
+  index: 0  /* Put player index here, should be less than `playerCount` */
 });
 
 p.on('message', (message, target) => {
