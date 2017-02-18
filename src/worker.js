@@ -8,7 +8,7 @@ function State(options) {
   this.visual = new poker.controller.Visual({
     cardCount: options.cardCount
   });
-  this.game = new poker.Protocol({
+  this.game = new poker.protocol.Protocol({
     index: options.index,
     playerCount: options.playerCount,
     cardCount: options.cardCount,
@@ -53,7 +53,7 @@ State.prototype.open = function open(index) {
 };
 
 State.prototype.update = function update(msg) {
-  this.game.update(msg, functin(err) {
+  this.game.update(msg, function(err) {
     if (err)
       return postMessage({ type: 'error', payload: err.message });
     postMessage({ type: 'update:complete' });

@@ -6,7 +6,7 @@ const debug = require('debug')('test');
 const elliptic = require('elliptic');
 
 const poker = require('../');
-const Protocol = poker.Protocol;
+const Protocol = poker.protocol.Protocol;
 
 const CARD_COUNT = 52;
 const CURVE = elliptic.curves.secp256k1.curve;
