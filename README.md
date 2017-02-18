@@ -25,7 +25,7 @@ const controller = {
 
 const p = new cryptoDeck.protocol.Protocol({
   curve: require('elliptic').curves.secp256k1.curve,
-  cardCount: 54,
+  cardCount: 52,
   controller,
   playerCount: 4,
   index: 0  /* Put player index here, should be less than `playerCount` */
