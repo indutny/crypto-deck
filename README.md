@@ -28,7 +28,14 @@ const p = cryptoDeck.create({
   cardCount: 52,
   controller,
   playerCount: 4,
-  index: 0  /* Put player index here, should be less than `playerCount` */
+  index: 0,  /* Put player index here, should be less than `playerCount` */
+
+  /* Optional */
+
+  /* When no entropy source is availabe at runtime, pre-generated entropy
+   * may be used to seed the Hmac-PRNG
+   */
+  entropy: crypto.getRandomBytes(24)
 });
 
 p.on('message', (message, target) => {

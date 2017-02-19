@@ -5,6 +5,7 @@ const tape = require('tape');
 const elliptic = require('elliptic');
 
 const cryptoDeck = require('../');
+const rng = new cryptoDeck.RNG();
 const Shuffle = cryptoDeck.Shuffle;
 
 tape('Shuffle', (t) => {
@@ -16,7 +17,7 @@ tape('Shuffle', (t) => {
 
     const res = {};
     for (let i = 0; i < 1000000; i++) {
-      const shuffle = new Shuffle(num);
+      const shuffle = new Shuffle(rng, num);
       const t = shuffle.run(out.slice());
       const key = t.join(':');
       if (res[key] === undefined)

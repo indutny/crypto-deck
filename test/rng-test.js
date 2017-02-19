@@ -40,5 +40,10 @@ tape('RNG', (t) => {
   const large = dist(52);
   t.ok(large.max / large.min < 1.15, 'numbers should be close (large)');
 
+  const prng = new RNG(Buffer.alloc(24).fill(0xee));
+  t.equal(Buffer.from(prng.bytes(32)).toString('hex'),
+          'f2c2ee1da9ffa972ac5e087a649070584cf3506d21c48b2082aeea6f803f685a',
+          'PRNG mode');
+
   t.end();
 });
